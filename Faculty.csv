@@ -1,0 +1,16 @@
+faculty_id,gender,first_name,last_name,title,department,superpower,teaching_subject,years_experience,team_affiliation
+1-101,Male,Charles,Xavier,Headmaster,Mutant Studies,Telepathy,Ethics of Mutant Powers,30,X-Men
+1-102,Male,Logan,Howlett,Instructor,Combat Training,Regeneration & Claws,Survival 101,100,X-Men
+1-103,Female,Ororo,Munroe,Professor,Weather Manipulation,Weather Control,Meteorology for Mutants,15,X-Men
+1-104,Male,Hank,McCoy,Professor,Science & Technology,Superhuman Intelligence,Advanced Biology,25,X-Men
+1-105,Female,Emma,Frost,Instructor,Psychic Training,Telepathy & Diamond Form,Mind Control & Defense,20,X-Men
+1-106,Female,Katherine,Pryde,Professor,Physics,Phasing,Quantum Mechanics,10,X-Men
+1-107,Male,Remy,Lebeau,Trainer,Combat Training,Kinetic Energy Manipulation,Strategic Gambling,15,X-Men
+1-108,Male,Piotr,Rasputin,Instructor,Art & Combat,Organic Steel Transformation,Art & Sculpting,18,X-Men
+1-109,Female,Jean,Grey,Professor,Psychic Studies,Telekinesis & Telepathy,Advanced Psychic Combat,22,X-Men
+1-110,Male,Bobby,Drake,Instructor,Environmental Science,Cryokinesis,Climate Adaptation,12,X-Men
+1-111,Male,Warren,Worthington,Instructor,Aerial Combat,Flight & Healing,Avian Physiology,14,X-Men
+1-112,Other,Anna,LeBeau,Instructor,Power Absorption,Handling Power Transfer,Power Absorption,10,X-Men
+1-113,Male,Kurt,Wagner,Trainer,Stealth & Infiltration,Teleportation,Silent Movement,16,X-Men
+1-114,Male,Scott,Summers,Instructor,Tactical Training,Optic Blasts,Combat Strategy,20,X-Men
+1-115,Female,Lorna,Dane,Instructor,Electromagnetic Studies,Magnetism,Advanced Magnetic Fields,14,X-Men

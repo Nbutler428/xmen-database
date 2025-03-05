@@ -1,0 +1,14 @@
+student_id,first_name,last_name,age,gender,mutant_codenames,superpower,class_year,mentor_id,dormitory,status
+6,Kitty,Pryde,16,Female,Shadowcat,Phasing,2,1-106,Beta Wing,Active
+13,Samuel,Guthrie,16,Male,Cannonball,Explosive Flight,2,1-114,Beta Wing,Active
+15,Laura,Kinney,16,Female,X-23,Adamantium Claws & Healing,2,1-102,Gamma Hall,Active
+5,David,Haller,18,Male,Legion,Reality Warping,4,1-101,Omega Wing,Active
+1,Sofia,Mantega,17,Female,Wind Dancer,Aerokinesis,3,1-103,Alpha Hall,Active
+7,Julian,Keller,17,Male,Hellion,Telekinesis,3,1-109,Beta Wing,Active
+8,Noriko,Ashida,16,Female,Surge,Electrokinesis,2,1-115,Gamma Hall,Active
+9,Cessily,Kincaid,17,Female,Mercury,Liquid Metal Form,3,1-108,Alpha Hall,Active
+10,Victor,Borkowski,16,Male,Anole,Regeneration & Camouflage,2,1-102,Beta Wing,Active
+11,David,Haller,18,Male,Legion,Reality Warping,4,1-101,Omega Wing,Active
+12,Sofia,Mantega,17,Female,Wind Dancer,Aerokinesis,3,1-103,Alpha Hall,Active
+14,Noriko,Ashida,16,Female,Surge,Electrokinesis,2,1-115,Gamma Hall,Active
+16,Cessily,Kincaid,17,Female,Mercury,Liquid Metal Form,3,1-108,Alpha Hall,Active
