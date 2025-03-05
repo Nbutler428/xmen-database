@@ -1,0 +1,25 @@
+SELECT s.first_name, s.last_name, f.first_name AS mentor, f.years_experience
+FROM students s
+JOIN faculty f ON s.mentor_id = f.faculty_id
+ORDER BY f.years_experience DESC;
+
+
+SELECT s.first_name, s.last_name, d.scenario, d.score
+FROM students s
+JOIN danger_room_logs d ON s.student_id = d.student_id
+WHERE d.result = 'Critical Failure'
+ORDER BY d.score;
+
+
+SELECT c.course_name, COUNT(*) AS total_students
+FROM enrollment e
+JOIN courses c ON e.course_id = c.course_id
+GROUP BY c.course_name
+ORDER BY total_students DESC
+LIMIT 1;
+
+
+
+
+
+
