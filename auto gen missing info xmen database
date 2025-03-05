@@ -1,0 +1,77 @@
+INSERT INTO enrollment (student_id, course_id, grade)
+SELECT s.student_id, c.course_id,
+       CASE 
+           WHEN random() > 0.8 THEN 'A' 
+           WHEN random() > 0.6 THEN 'B+' 
+           WHEN random() > 0.4 THEN 'B'
+           ELSE 'Pass'
+       END AS grade
+FROM students s
+CROSS JOIN (SELECT course_id FROM courses ORDER BY random() LIMIT 3) c;
+
+
+INSERT INTO danger_room_logs (student_id, trainer_id, scenario, score, result, date)
+SELECT s.student_id, f.faculty_id, 
+	CASE 
+		WHEN random() > 0.7 THEN 'Sentinel Attack Simulation' 
+		WHEN random() > 0.4 THEN 'Stealth Exercise' 
+       ELSE 'Rescue Operation'
+       END AS scenario,
+       FLOOR(random() * 100) AS score,
+   CASE 
+     WHEN random() > 0.8 THEN 'Passed'
+       ELSE 'Critical Failure'
+       END AS result,
+       NOW() - (INTERVAL '1 day' * FLOOR(random() * 30))
+FROM students s
+JOIN faculty f ON f.title = 'Instructor'
+ORDER BY random()
+LIMIT 20;
+
+
+INSERT INTO missions (mission_name, leader_id, objective, difficulty_level, success_status)
+SELECT 'Mission ' || row_number() OVER (), 
+    f.faculty_id, 
+    CASE 
+        WHEN random() > 0.7 THEN 'Rescue Operation' 
+        WHEN random() > 0.4 THEN 'Infiltration' 
+        ELSE 'Defensive Battle'
+    END AS objective,
+    CASE 
+        WHEN random() > 0.8 THEN 'Omega' 
+        WHEN random() > 0.5 THEN 'Alpha' 
+        ELSE 'Beta'
+    END AS difficulty_level,
+    CASE 
+        WHEN random() > 0.7 THEN 'Successful' 
+        ELSE 'Failed'
+    END AS success_status
+FROM faculty f
+WHERE f.title IN ('Instructor', 'Professor')
+ORDER BY random()
+LIMIT 5;
+
+
+INSERT INTO mission_participants (mission_id, participant_id, role, status)
+SELECT 
+    m.mission_id, 
+    (CASE 
+        WHEN random() > 0.5 THEN s.student_id::TEXT 
+        ELSE f.faculty_id 
+    END) AS participant_id,
+    CASE 
+        WHEN random() > 0.7 THEN 'Frontline Fighter'
+        WHEN random() > 0.4 THEN 'Recon'
+        ELSE 'Support'
+    END AS role,
+    CASE 
+        WHEN random() > 0.8 THEN 'Completed Mission' 
+        WHEN random() > 0.6 THEN 'Wounded' 
+        ELSE 'Missing'
+    END AS status
+FROM missions m
+CROSS JOIN students s
+LEFT JOIN faculty f ON random() > 0.7
+ORDER BY random()
+LIMIT 20;
+
