@@ -1,0 +1,98 @@
+
+
+CREATE TABLE faculty (
+    faculty_id TEXT PRIMARY KEY CHECK (faculty_id ~ '^1-[0-9]+$'),
+    gender TEXT CHECK (gender IN ('Male', 'Female', 'Non-Binary', 'Other')),
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    title TEXT CHECK (title IN ('Professor', 'Instructor', 'Headmaster', 'Trainer')),
+    department TEXT,
+    superpower TEXT NOT NULL,
+    teaching_subject TEXT,
+    years_experience INTEGER CHECK (years_experience >= 0),
+    team_affiliation TEXT
+);
+
+
+
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    age INTEGER CHECK (age >= 10),
+    gender TEXT CHECK (gender IN ('Male', 'Female', 'Non-Binary', 'Other')),
+    mutant_codenames TEXT,
+    superpower TEXT NOT NULL,
+    class_year INTEGER CHECK (class_year BETWEEN 1 AND 4),
+    mentor_id TEXT REFERENCES faculty(faculty_id) ON DELETE SET NULL,
+    dormitory TEXT,
+    status TEXT CHECK (status IN ('Active', 'On a Mission', 'Expelled'))
+);
+
+
+
+
+CREATE TABLE courses (
+    course_id SERIAL PRIMARY KEY,
+    course_name TEXT NOT NULL,
+    description TEXT,
+    faculty_id TEXT REFERENCES faculty(faculty_id) ON DELETE SET NULL,
+    semester TEXT NOT NULL,
+    max_enrollment INTEGER CHECK (max_enrollment > 0)
+);
+
+
+CREATE TABLE enrollment (
+    enrollment_id SERIAL PRIMARY KEY,
+    student_id INTEGER REFERENCES students(student_id) ON DELETE CASCADE,
+    course_id INTEGER REFERENCES courses(course_id) ON DELETE CASCADE,
+    grade TEXT CHECK (grade IN ('A', 'B+', 'B', 'C+', 'C', 'D', 'F', 'Pass', 'Fail'))
+);
+
+
+CREATE TABLE danger_room_logs (
+    session_id SERIAL PRIMARY KEY,
+    student_id INTEGER REFERENCES students(student_id) ON DELETE CASCADE,
+    trainer_id TEXT REFERENCES faculty(faculty_id) ON DELETE SET NULL,
+    scenario TEXT NOT NULL,
+    score INTEGER CHECK (score BETWEEN 0 AND 100),
+    result TEXT CHECK (result IN ('Passed', 'Critical Failure', 'Incomplete')),
+    date DATE NOT NULL
+);
+
+
+CREATE TABLE missions (
+    mission_id SERIAL PRIMARY KEY,
+    mission_name TEXT NOT NULL,
+    leader_id TEXT REFERENCES faculty(faculty_id) ON DELETE SET NULL,
+    objective TEXT NOT NULL,
+    difficulty_level TEXT CHECK (difficulty_level IN ('Omega', 'Alpha', 'Beta', 'Gamma')),
+    success_status TEXT CHECK (success_status IN ('Successful', 'Failed', 'Ongoing'))
+);
+
+
+CREATE TABLE mission_participants (
+    mission_participant_id SERIAL PRIMARY KEY,
+    mission_id INTEGER REFERENCES missions(mission_id) ON DELETE CASCADE,
+    participant_id TEXT NOT NULL,
+    role TEXT,
+    status TEXT CHECK (status IN ('Wounded', 'Missing', 'Completed Mission'))
+);
+
+
+
+
+
+
+COPY faculty
+FROM 'C:\Users\Public\data503-data\Faculty.csv'
+with (FORMAT csv,header);
+
+
+copy students
+FROM 'C:\Users\Public\data503-data\Students.csv'
+with (FORMAT csv,header);
+
+copy courses
+FROM 'C:\Users\Public\data503-data\Classes.csv'
+with (FORMAT csv,header);
